@@ -29,7 +29,7 @@ const colref = collection(db, 'User')
 export default function Home() {
   return (
     <Container>
-      <h1>This is home page</h1>
+      
     </Container>
   )
 }
