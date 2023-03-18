@@ -1,5 +1,4 @@
 const sqlite3 = require('sqlite3').verbose();
-
 let sql 
 
 let db = new sqlite3.Database('./Users.db', sqlite3.OPEN_READWRITE, (err) =>{
@@ -12,9 +11,9 @@ const createDB = () =>{
 }
 
 
-const addData = () =>{
-    sql =  `INSERT INTO users(firstName, lastName, interests, goals, availibility) VALUES (?,?,?,?,?)`
-    db.run(sql,["rick", 'rickson', 'ricking', 'being a rick', 'a rick'], (err) => {
+const addData = (firstName:string, lastName:string, interests:string, goals:string, availibility:string) =>{
+    sql =  `INSERT INTO users(firstName, lastName, interests, goals, availibility ) VALUES (?,?,?,?,?)`
+    db.run(sql,[firstName, lastName, interests, goals, availibility], (err) => {
         if(err) return console.log(err.message)
     })
 }
@@ -31,16 +30,16 @@ const query = () =>{
 }
 
 //update
-const updateData = () =>{
-    sql = `UPDATE users SET firstName = ? WHERE id = ?`
-    db.run(sql,["David", 1 ],(err) => {
+const updateData = (table, change, id) =>{
+    sql = `UPDATE users SET ${table} = ? WHERE id = ?`
+    db.run(sql,[change, id ],(err) => {
         if(err) return console.log(err.message)
     })
 }
 
-const deleteData = () =>{
-    sql = `DELETE users SET firstName = ? WHERE id = ?`
-    db.run(sql,[1],(err) => {
+const deleteData = (table, id) =>{
+    sql = `DELETE users SET ${table} = ? WHERE id = ?`
+    db.run(sql,[id],(err) => {
         if(err) return console.log(err.message)
     })
 }
