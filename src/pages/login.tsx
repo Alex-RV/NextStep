@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from './components/Container'
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function login() {
   return (
@@ -11,7 +12,9 @@ export default function login() {
           <h1 className='text-gray-200 text-[3rem]'>Login via Google</h1>
         </div>
         <div className='flex flex-col'>
-          
+        <form method="POST" action="/api/auth/signin/google">
+            <button type="submit">Sign in with Google</button>
+        </form>
         </div>
       </div>
       
