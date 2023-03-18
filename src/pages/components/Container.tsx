@@ -4,10 +4,9 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import cn from 'classnames';
-import { Oswald } from '@next/font/google'
-
 import MobileMenu from './MobileMenu';
 import Footer from './Footer';
+import React from 'react';
 
 function NavItem({ href, text }) {
   const router = useRouter();
