@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 
 
 const ExternalLink = ({ href, children }) => (
@@ -23,41 +24,6 @@ export default function Footer() {
             className="text-gray-500 hover:text-gray-600 transition"
           >
             Home
-          </Link>
-          <Link
-            href="/about"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            About
-          </Link>
-        </div>
-        <div className="flex flex-col space-y-4">
-          <ExternalLink href="https://github.com/Alex-RV">
-            GitHub</ExternalLink>
-          <ExternalLink href="https://www.linkedin.com/in/alex-riabov-v">
-            Linkedin</ExternalLink>
-          <ExternalLink href="https://www.youtube.com/channel/UCCh82KoX6F34PY1lxoqEW3g">
-            YouTube
-          </ExternalLink>
-          <Link
-            href="/ip"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            Your IP
-          </Link>
-        </div>
-        <div className="flex flex-col space-y-4">
-          <Link
-            href="/projects"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/skills"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            Skills
           </Link>
         </div>
       </div>
