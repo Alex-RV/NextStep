@@ -9,6 +9,10 @@ npm run dev
 
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
+npm i firebase
+npm i firebase/firestore
+npm i classnames
+npm i next-themes
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
