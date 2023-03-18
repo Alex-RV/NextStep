@@ -3,8 +3,10 @@ import Image from 'next/image'
 // import styles from '@/styles/Home.module.css'
 import Container from './components/Container'
 import React from 'react'
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
   return (
     <Container 
     title="Next Step"
@@ -12,6 +14,12 @@ export default function Home() {
       <div className='mt-32 flex flex-col justify-start items-start max-w-5xl w-full mx-auto mb-16 border-gray-200 dark:border-gray-700"'>
         <div className='flex flex-col'>
           <h1 className='text-gray-200 text-[10rem]'>NEXT STEP</h1>
+          {!session ? (
+        <>
+        </>
+      ) : (<></>
+            )}
+
         </div>
         <div className='flex flex-col'>
           <div className=''>
