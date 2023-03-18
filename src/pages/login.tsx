@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from './components/Container'
 import { useSession, signIn, signOut } from 'next-auth/react';
+import addData from './components/Database/Database'
 
 export default function login() {
   return (

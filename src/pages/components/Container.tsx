@@ -8,7 +8,9 @@ import cn from 'classnames';
 import Footer from './Footer';
 import MobileMenu from './MobileMenu';
 import React from 'react';
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signOut, useSession } from 'next-auth/react';
+import addData from './Database/Database'
+
 
 function NavItem({ href, text }) {
   const router = useRouter();
@@ -29,13 +31,21 @@ function NavItem({ href, text }) {
   );
 }
 
+export const Login = (props:any) => {
+  if (!props.isLoggedIn){
+    return <NavItem href="/login" text="Login" />
+  }
+  return <NavItem href="/settings" text="Settings" />
+}
+
 export default function Container(props) {
-const { data: session } = useSession();
+  const { data: session } = useSession();
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
+
 
   const { children, ...customMeta } = props;
   const router = useRouter();
@@ -45,6 +55,7 @@ const { data: session } = useSession();
     type: 'website',
     ...customMeta
   };
+  
 
   return (
     <div className="bg-gray-200 dark:bg-gray-900">
@@ -57,16 +68,19 @@ const { data: session } = useSession();
             <MobileMenu />
             <NavItem href="/" text="Home" />
             <NavItem href="/team" text="Team" />
+            <NavItem href="/Intro" text="Intro" />
           </div>
           <div className='flex flex-row gap-3'> 
           {!session ? (
         <>
-          <NavItem href="/login" text="Login" />
+
         </>
       ) : (<><h4 className='font-normal p-1 sm:px-3 sm:py-2 text-green-900 dark:text-gray-400'>Signed in as {session.user.name}</h4>
       <button onClick={() => signOut()}>Sign out</button></>
             )}
           
+          {/* <NextLink className='' href={"/login"}>Login</NextLink> */}
+          <Login/>
           <button
             aria-label="Toggle Dark Mode"
             type="button"
