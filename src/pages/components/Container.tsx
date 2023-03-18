@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import cn from 'classnames';
-import MobileMenu from './MobileMenu';
+
 import Footer from './Footer';
+import MobileMenu from './MobileMenu';
 import React from 'react';
 
 function NavItem({ href, text }) {
@@ -30,33 +31,33 @@ function NavItem({ href, text }) {
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const [searchResponseData, setSearchResponseData]= useState("");
+
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
   const { children, ...customMeta } = props;
   const router = useRouter();
+  const meta = {
+    title: 'Next Step',
+    description: `Find your pathway`,
+    type: 'website',
+    ...customMeta
+  };
 
   return (
-    <div className="bg-[#f9fafb] dark:bg-[#131415]">
+    <div className="bg-gray-50 dark:bg-gray-900">
       <Head>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"/>
+        <title>{meta.title}</title>
       </Head>
-      
-      <main
-        className="flex flex-col justify-center mx-8 bg-gray-50 dark:bg-[#131415] ">
-        {children}
-      </main>
-      <div className="flex flex-col justify-center px-8 bottom-0 fixed w-max-3xl w-full pb-2 bg-opacity-[90%] bg-gray-50   dark:bg-[#131415]">
-      <hr className="flex items-center  justify-between w-full   relative mx-auto pt-1  sm:pb-1 border-1 max-w-3xl border-gray-200 dark:border-gray-800" />
-        <nav className="flex items-center  justify-between w-full   relative max-w-3xl mx-auto  text-gray-900   dark:text-gray-100">
-          <div className="ml-[-0.60rem] ">
+      <div className="flex flex-col justify-center px-8">
+        <nav className="flex items-center justify-between w-full relative max-w-5xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+          <div className="ml-[-0.60rem]">
             <MobileMenu />
             <NavItem href="/" text="Home" />
-            <NavItem href="/about" text="About" />
             <NavItem href="/team" text="Team" />
           </div>
+          <div className='flex flex-row gap-3'> 
+            <button>Login</button>
           <button
             aria-label="Toggle Dark Mode"
             type="button"
@@ -71,7 +72,7 @@ export default function Container(props) {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                className="w-5 h-5 text-gray-800 dark:text-gray-200 animate-pulse duration-75"
+                className="w-5 h-5 text-gray-800 dark:text-gray-200"
               >
                 {resolvedTheme === 'dark' ? (
                   <path
@@ -91,8 +92,16 @@ export default function Container(props) {
               </svg>
             )}
           </button>
+          </div>
         </nav>
       </div>
+      <main
+        id="skip"
+        className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
+      >
+        {children}
+        <Footer />
+      </main>
     </div>
   );
 }
