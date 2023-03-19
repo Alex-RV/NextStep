@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import cn from 'classnames';
+import NextImage from 'next/image'
 
 import Footer from './Footer';
 import MobileMenu from './MobileMenu';
@@ -64,10 +65,12 @@ export default function Container(props) {
       </Head>
       <div className="flex flex-col justify-center px-8">
         <nav className="flex items-center justify-between w-full relative max-w-5xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-3 sm:pb-6  text-green-900 bg-gray-200  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
-          <div className="ml-[-0.60rem]">
+          
+          <div className="ml-[-0.60rem] flex-row">
             <MobileMenu />
+            <NextImage className='rounded-full  md:inline-block ' width={50} height={50} src={'/logo.png'} alt={'logo'} />
             <NavItem href="/" text="Home" />
-            <NavItem href="/team" text="Team" />
+            {/* <NavItem href="/team" text="Team" /> */}
             {!session ? (
         <>
           

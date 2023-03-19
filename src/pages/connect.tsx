@@ -10,7 +10,7 @@ export default function connect() {
             <h1 className='text-gray-200 text-[5rem]'>Your matches with Mentors</h1>
         </div>
         {/* maping from database */}
-        <div className='flex w-full items-center'>
+        <div className='flex w-full items-center flex-col'>
         <MentorCard name={"Some Name"} degree={"Some Degree"} imgSrc={undefined} description={"This is description"}/>
         </div>
     </div>

@@ -36,7 +36,7 @@ export default function Home() {
           </div>
           <div className='flex flex-row text-gray-200 mt-5'>
             <NextLink href={!session ? "/login" : "/profile"} className='bold text-[1.5rem] border-gray-200 border-2 p-[0.5rem]'>Try Next Step</NextLink>
-            <NextLink href={'/team'} className='bold text-[1.5rem] p-[0.5rem] pl-5 underline'>Learn More</NextLink>
+            <NextLink href={'https://github.com/Alex-RV/NextStep'} className='bold text-[1.5rem] p-[0.5rem] pl-5 underline'>Learn More</NextLink>
           </div>
         </div>
       </div>
