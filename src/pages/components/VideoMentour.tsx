@@ -31,7 +31,7 @@ interface VideoMentourProps {
   mentour: string;
 }
 
-export default function VideoMentour(props: VideoMentourProps) {
+function VideoMentour(props: VideoMentourProps) {
   const localVideo = useRef<HTMLVideoElement>(null);
   const remoteVideo = useRef(null);
   let peer: RTCPeerConnection = null;

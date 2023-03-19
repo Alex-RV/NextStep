@@ -32,7 +32,7 @@ var peerConnectionConfig = {
   ],
 };
 
-export default function VideoMentee(props: VideoMenteeProps) {
+function VideoMentee(props: VideoMenteeProps) {
   const localVideo = useRef<HTMLVideoElement>(null);
   const remoteVideo = useRef(null);
   let peer: RTCPeerConnection = null;
