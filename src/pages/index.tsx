@@ -5,6 +5,14 @@ import Container from './components/Container'
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react";
 import NextLink from 'next/link';
+import createFromDB from './api/createData';
+
+fetch('createFromDB')
+.then(response => response.text()) 
+.then(textString => {
+    console.log(textString);
+});
+
 
 export default function Home() {
   const { data: session } = useSession();

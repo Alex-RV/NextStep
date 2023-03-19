@@ -9,7 +9,7 @@ type AddDataIn = {
   availibility: string;
 };
 
-export default function handler(
+export default function addDataDB(
   req: NextApiRequest,
   res: NextApiResponse<Object>
 ) {

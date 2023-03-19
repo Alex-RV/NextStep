@@ -12,7 +12,7 @@ const createDB = () =>{
 
 
 const addData = (firstName:string, lastName:string, interests:string, goals:string, availibility:string) =>{
-    sql =  `INSERT INTO users(firstName, lastName, interests, goals, availibility ) VALUES (?,?,?,?,?)`
+    sql =  `INSERT INTO users(firstName, interests, goals, availibility ) VALUES (?,?,?,?,?)`
     db.run(sql,[firstName, lastName, interests, goals, availibility], (err) => {
         if(err) return console.log(err.message)
     })
