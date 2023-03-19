@@ -5,17 +5,17 @@ interface UserPair {
   mentour: UserId;
 }
 
-interface ChatRecords {
+interface ChatRecord {
   sender: UserId;
   text: String;
 }
 
 interface UserData {
-  data: Map<UserPair, ChatRecords[]>;
+  data: Map<UserPair, ChatRecord[]>;
 }
 
 var users: UserData = {
   data: new Map(),
 };
 
-export { users, type UserId, type UserPair };
+export { users, type UserId, type UserPair, type ChatRecord };
