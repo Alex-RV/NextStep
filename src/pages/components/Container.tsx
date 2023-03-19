@@ -72,7 +72,9 @@ export default function Container(props) {
         <>
           
         </>
-      ) : (<><NavItem href="/profile" text="Profile" /></>
+      ) : (<>
+      <NavItem href="/profile" text="Profile" />
+      <NavItem href="/connect" text="Connect" /></>
             )}
           </div>
           <div className='flex flex-row gap-3'> 
@@ -83,7 +85,6 @@ export default function Container(props) {
       ) : (<><h4 className='font-normal p-1 sm:px-3 sm:py-2 text-green-900 dark:text-gray-400'>Signed in as {session.user.name}</h4>
       <button onClick={() => signOut()}>Sign out</button></>
             )}
-          <Login/>
           <button
             aria-label="Toggle Dark Mode"
             type="button"
@@ -123,7 +124,7 @@ export default function Container(props) {
       </div>
       <main
         id="skip"
-        className="flex flex-col justify-center px-8 bg-[#002e20] dark:bg-gray-900"
+        className="flex flex-col  px-8 bg-[#002e20] dark:bg-gray-900"
       >
         {children}
         <Footer />

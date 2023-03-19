@@ -24,8 +24,8 @@ export default function profile() {
                         <label htmlFor="last" className="form__label">Last Name</label>
                     </div>
                     <div className="form__group field">
-                        <input type="input" className="form__field" placeholder="Pronounce" name="Pronounce" id='Pronounce' required />
-                        <label htmlFor="Pronounce" className="form__label">Pronounce</label>
+                        <input type="input" className="form__field" placeholder="Pronouns" name="Pronouns" id='Pronouns' required />
+                        <label htmlFor="Pronouns" className="form__label">Pronouns</label>
                     </div>
                     <div className="form__group field">
                         <input type="input" className="form__field" placeholder="Email" name="Email" id='Email' required />
