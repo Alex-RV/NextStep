@@ -10,7 +10,6 @@ import Footer from './Footer';
 import MobileMenu from './MobileMenu';
 import React from 'react';
 import { signOut, useSession } from 'next-auth/react';
-import addData from './Database/Database'
 
 
 function NavItem({ href, text }) {
