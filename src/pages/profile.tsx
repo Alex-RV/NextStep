@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from './components/Container'
+import DropBox from './components/DropBox'
 
 export default function profile() {
   return (
@@ -56,6 +57,16 @@ export default function profile() {
                     <div className="form__group field">
                         <input type="input" className="form__field" placeholder="Interests" name="Interests" id='Interests' required />
                         <label htmlFor="Interests" className="form__label">Interests</label>
+                    </div>
+                    <div className='flex flex-row w-full'>
+                        <div className='flex flex-col items-start justify-start'>
+                            <DropBox text={"text"} id={"text"}/>
+                            <DropBox text={"text"} id={"text1"}/>
+                        </div>
+                        <div className='flex flex-col items-end justify-end'>
+                            <DropBox text={"text"} id={"text2"}/>
+                            <DropBox text={"text"} id={"text3"}/>
+                        </div>
                     </div>
                     <div className="form__group field">
                         <input type="input" className="form__field" placeholder="Personal Goals or Aspirations in Life" name="Goals" id='Goals' required />

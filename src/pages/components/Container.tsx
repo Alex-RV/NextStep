@@ -83,8 +83,6 @@ export default function Container(props) {
       ) : (<><h4 className='font-normal p-1 sm:px-3 sm:py-2 text-green-900 dark:text-gray-400'>Signed in as {session.user.name}</h4>
       <button onClick={() => signOut()}>Sign out</button></>
             )}
-          
-          {/* <NextLink className='' href={"/login"}>Login</NextLink> */}
           <Login/>
           <button
             aria-label="Toggle Dark Mode"
