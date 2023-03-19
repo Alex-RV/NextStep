@@ -44,4 +44,4 @@ const deleteData = (table, id) =>{
     })
 }
 
-export default {createDB, addData, query, updateData, deleteData}
+export {createDB, addData, query, updateData, deleteData}

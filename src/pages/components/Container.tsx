@@ -68,7 +68,12 @@ export default function Container(props) {
             <MobileMenu />
             <NavItem href="/" text="Home" />
             <NavItem href="/team" text="Team" />
-            <NavItem href="/Intro" text="Intro" />
+            {!session ? (
+        <>
+          
+        </>
+      ) : (<><NavItem href="/profile" text="Profile" /></>
+            )}
           </div>
           <div className='flex flex-row gap-3'> 
           {!session ? (
