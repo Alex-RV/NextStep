@@ -9,7 +9,8 @@ export default function profile() {
             <div className='mb-10'>
                 <h1 className='text-gray-200 text-[5rem]'>My Profile</h1>
             </div>
-            <div className='items-start'>
+            {/* onSubmit={} */}
+            <form id="profileForm"  className='items-start'>
                 <div>
                     <h1 className='text-gray-200 text-[3rem]'>Personal Information:</h1>
                     <div className='italic text-gray-200 text-[1.2rem] gap-4 w-full'>
@@ -73,7 +74,11 @@ export default function profile() {
                         <label htmlFor="Goals" className="form__label">Personal Goals or Aspirations in Life</label>
                     </div>
                 </div>
-            </div>
+                <div className='items-end'>
+                    <button className="button-68 my-7 " role="button" type="submit"> Submit</button>
+                </div>
+                
+            </form>
         </div>
     </Container>
   )
