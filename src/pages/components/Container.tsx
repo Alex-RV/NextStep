@@ -83,7 +83,7 @@ export default function Container(props) {
           <div className='flex flex-row gap-3'> 
           {!session ? (
         <>
-
+        <NavItem href="/api/auth/signin" text="Login" />
         </>
       ) : (<><h4 className='font-normal p-1 sm:px-3 sm:py-2 text-green-900 dark:text-gray-400'>Signed in as {session.user.name}</h4>
       <button onClick={() => signOut()}>Sign out</button></>
