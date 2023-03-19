@@ -55,10 +55,6 @@ export default function profile() {
                         <input type="input" className="form__field" placeholder="Experience" name="Experience" id='Experience' required />
                         <label htmlFor="Experience" className="form__label">Experience</label>
                     </div>
-                    <div className="form__group field">
-                        <input type="input" className="form__field" placeholder="Interests" name="Interests" id='Interests' required />
-                        <label htmlFor="Interests" className="form__label">Interests</label>
-                    </div>
                     <div className='flex flex-row w-full'>
                         <div className='flex flex-col items-start justify-start'>
                             <DropBox text={"Agriculture"} id={"Agriculture"}/>
@@ -90,8 +86,9 @@ export default function profile() {
                         <label htmlFor="Goals" className="form__label">Personal Goals or Aspirations in Life</label>
                     </div>
                 </div>
+                {/* onClick={() => window.location.href='/connect'} */}
                 <div className='items-end'>
-                    <button className="button-68 my-7 " role="button" type="submit"> Submit</button>
+                    <button className="button-68 my-7 "  role="button" type="submit"> Submit</button>
                 </div>
                 
             </form>
