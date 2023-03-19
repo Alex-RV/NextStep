@@ -30,6 +30,7 @@ const query = () =>{
 }
 
 //update
+//
 const updateData = (table, change, id) =>{
     sql = `UPDATE users SET ${table} = ? WHERE id = ?`
     db.run(sql,[change, id ],(err) => {

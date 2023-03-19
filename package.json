@@ -25,6 +25,7 @@
     "pocketbase": "^0.12.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sequelize": "^6.29.3",
     "sqlite3": "^5.1.6",
     "typescript": "5.0.2"
   },
