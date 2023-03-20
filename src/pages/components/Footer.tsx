@@ -25,6 +25,13 @@ export default function Footer() {
           >
             Home
           </Link>
+          <Link
+            href="/"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            Team
+          </Link>
+          
         </div>
       </div>
     </footer>
