@@ -42,7 +42,7 @@ export default function MobileMenu() {
               <li><NextLink href="/">Home</NextLink></li>
               {!session ? (
         <>
-          <li><a href="/api/auth/signin">Login</a></li>
+          <li><NextLink href="/api/auth/signin">Login</NextLink></li>
         </>
       ) : (<>
               <li> <NextLink href="/profile">Profile</NextLink></li>
