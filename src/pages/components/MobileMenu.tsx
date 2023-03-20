@@ -16,8 +16,8 @@ function NavItem({ href, text }) {
       href={href}
       className={cn(
         isActive
-          ? 'font-semibold text-green-700 dark:text-gray-200'
-          : 'font-normal text-green-900 dark:text-gray-400',
+          ? 'font-semibold text-green-700'
+          : 'font-normal text-green-900',
         'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
       )}
     >
@@ -39,14 +39,14 @@ export default function MobileMenu() {
                 <span></span>
                 <span></span>
             <ul id="menu">
-              <li><a href="/">Home</a></li>
+              <li><NextLink href="/">Home</NextLink></li>
               {!session ? (
         <>
           <li><a href="/api/auth/signin">Login</a></li>
         </>
       ) : (<>
-              <li> <a href="/profile">Profile</a></li>
-              <li> <a href="/connect">Connect</a></li>
+              <li> <NextLink href="/profile">Profile</NextLink></li>
+              <li> <NextLink href="/connect">Connect</NextLink></li>
               </>
             )}
               {!session ? (
