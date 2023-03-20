@@ -5,7 +5,8 @@ import React, { useState, useEffect, createRef } from 'react';
 import styles from '../../styles/mobile-menu.module.css';
 
 export default function MobileMenu() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false || null);
+  console.log("LOGGGGG!!!!",isMenuOpen);
   const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
     isMenuOpen,
     {
