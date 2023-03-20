@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import Link from 'next/link';
-import useDelayedRender from 'use-delayed-render';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
