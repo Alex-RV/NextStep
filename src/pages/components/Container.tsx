@@ -35,7 +35,7 @@ export const Login = (props:any) => {
   if (!props.isLoggedIn){
     return <NavItem href="/login" text="Login" />
   }
-  return <NavItem href="/settings" text="Settings" />
+  return <NavItem href="/profile" text="Profile" />
 }
 
 export default function Container(props) {
@@ -62,11 +62,16 @@ export default function Container(props) {
       <Head>
         <title>{meta.title}</title>
       </Head>
-      <div className="flex flex-col justify-center px-8">
+      <div className='sm:hidden'>
+      <MobileMenu/>
+      </div>
+      
+      <div className='navBar'>
+      <div className="flex flex-col justify-center px-8 ">
         <nav className="flex items-center justify-between w-full relative max-w-5xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-3 sm:pb-6  text-green-900 bg-gray-200  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
           
           <div className="ml-[-0.60rem] flex-row">
-            <MobileMenu />
+            
             <NextImage className='rounded-full  md:inline-block ' width={50} height={50} src={'/logo.png'} alt={'logo'} />
             <NavItem href="/" text="Home" />
             {/* <NavItem href="/team" text="Team" /> */}
@@ -124,6 +129,7 @@ export default function Container(props) {
           </div>
         </nav>
       </div>
+      </div>
       <main
         id="skip"
         className="flex flex-col  px-8 bg-[#002e20] dark:bg-gray-900"
@@ -132,5 +138,6 @@ export default function Container(props) {
         <Footer />
       </main>
     </div>
+    
   );
 }
