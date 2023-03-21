@@ -55,6 +55,10 @@ export default function profile() {
                         <input type="input" className="form__field" placeholder="Experience" name="Experience" id='Experience' required />
                         <label htmlFor="Experience" className="form__label">Experience</label>
                     </div>
+                    <div className="form__group field">
+                        <input type="input" className="form__field" placeholder="Personal Goals or Aspirations in Life" name="Goals" id='Goals' required />
+                        <label htmlFor="Goals" className="form__label">Personal Goals or Aspirations in Life</label>
+                    </div>
                     <div className='flex flex-row w-full'>
                         <div className='flex flex-col items-start justify-start'>
                             <DropBox text={"Agriculture"} id={"Agriculture"}/>
@@ -68,7 +72,7 @@ export default function profile() {
                             <DropBox text={"History"} id={"History"}/>
                             <DropBox text={"Law"} id={"Law"}/>
                         </div>
-                        <div className='flex flex-col items-end justify-end'>
+                        <div className='flex flex-col items-start justify-start'>
                             <DropBox text={"Communications"} id={"Communications"}/>
                             <DropBox text={"Computer Science"} id={"Computer Science"}/>
                             <DropBox text={"Economics "} id={"Economics "}/>
@@ -80,10 +84,6 @@ export default function profile() {
                             <DropBox text={"Mathematics"} id={"Mathematics"}/>
                             <DropBox text={"Physics"} id={"Physics"}/>
                         </div>
-                    </div>
-                    <div className="form__group field">
-                        <input type="input" className="form__field" placeholder="Personal Goals or Aspirations in Life" name="Goals" id='Goals' required />
-                        <label htmlFor="Goals" className="form__label">Personal Goals or Aspirations in Life</label>
                     </div>
                 </div>
                 {/* onClick={() => window.location.href='/connect'} */}

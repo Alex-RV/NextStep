@@ -17,10 +17,10 @@ function NavItem({ href, text }) {
         isActive
           ? 'font-semibold text-green-700'
           : 'font-normal text-green-900',
-        ' nav-item hidden md:inline-block  rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+        ' nav-item hidden md:inline-block text-green-900 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
       )}
     >
-      <span className="capsize">{text}</span>
+      <span className="capsize text-green-900 dark:text-white">{text}</span>
     </NextLink>
   );
 }
@@ -30,7 +30,6 @@ export default function MobileMenu() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
     <>
-            
             <input id="toggle" type="checkbox"/>
             
             <label className="toggle-container" htmlFor="toggle">
@@ -44,14 +43,15 @@ export default function MobileMenu() {
               (<>
               <NavItem href={"/profile"} text={"Profile"}/>
               <NavItem href={"/connect"} text={"Connect"}/>
-              <h4 className='nav-item font-normal  text-green-900 dark:text-gray-400'>Signed in as {session.user.name}</h4>
-              <button className='nav-item' onClick={() => signOut()}>Sign out</button>
+              <h4 style={{ color: resolvedTheme === 'dark' ? 'white' : 'rgb(20 83 45)' }} className={`nav-item font-normal italic`}>Signed in as {session.user.name}</h4>
+              <button style={{ color: resolvedTheme === 'dark' ? 'white' : 'rgb(20 83 45)' }}  className='nav-item text-green-900 dark:text-white' onClick={() => signOut()}>Sign out</button>
               </>
             )}
               <button
             aria-label="Toggle Dark Mode"
             type="button"
-            className="nav-item w-9 h-9  flex items-center justify-center"
+            style={{ color: resolvedTheme === 'dark' ? 'white' : 'rgb(20 83 45)' }} 
+            className="nav-item w-9 h-9 text-green-900 dark:text-white flex items-center justify-center"
             onClick={() =>
               setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
             }
