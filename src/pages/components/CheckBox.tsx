@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function DropBox({text, id}) {
+export default function CheckBox({text, id, value}) {
   return (
     <>
  <div className="checkbox-wrapper-37 m-5">
-  <input type="checkbox" name="checkbox" id={id} />
+  <input value={value} type="checkbox" name="interests" id={id} />
   <label htmlFor={id} className="terms-label">
     <svg
       className="checkbox-svg"
