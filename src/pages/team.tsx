@@ -3,7 +3,8 @@ import Container from './components/Container'
 
 export default function team() {
   return (
-          <nav role="navigation">
+    <div className='bg-slate-600'>
+          <nav role="navigation" className='bg-black'>
             <div id="menuToggle">
               <input type="checkbox" />
                 <span></span>
@@ -17,5 +18,6 @@ export default function team() {
             </ul>
            </div>
           </nav>
+          </div>
   )
 }
