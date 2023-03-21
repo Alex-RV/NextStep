@@ -21,7 +21,7 @@ export default function Home() {
     description="Home page">
       <div className='mt-32 flex flex-col justify-start items-start max-w-5xl w-full mx-auto mb-16 border-gray-200 dark:border-gray-700"'>
         <div className='flex flex-col'>
-          <h1 className='text-gray-200 text-[7rem]'>NEXT STEP</h1>
+          <h1 className='text-gray-200 text-[7rem] lg:text-[10rem]'>NEXT STEP</h1>
         </div>
         <div className='flex flex-col'>
           <div className=''>
