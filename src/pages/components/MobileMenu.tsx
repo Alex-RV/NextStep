@@ -17,7 +17,7 @@ function NavItem({ href, text }) {
         isActive
           ? 'font-semibold text-green-700'
           : 'font-normal text-green-900',
-        ' nav-item hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+        ' nav-item hidden md:inline-block  rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
       )}
     >
       <span className="capsize">{text}</span>
@@ -44,7 +44,7 @@ export default function MobileMenu() {
               (<>
               <NavItem href={"/profile"} text={"Profile"}/>
               <NavItem href={"/connect"} text={"Connect"}/>
-              <h4 className='nav-item font-normal p-1 sm:px-3 sm:py-2 text-green-900 dark:text-gray-400'>Signed in as {session.user.name}</h4>
+              <h4 className='nav-item font-normal  text-green-900 dark:text-gray-400'>Signed in as {session.user.name}</h4>
               <button className='nav-item' onClick={() => signOut()}>Sign out</button>
               </>
             )}
