@@ -3,21 +3,31 @@ import Container from './components/Container'
 
 export default function team() {
   return (
-    <div className='bg-slate-600'>
-          <nav role="navigation" className='bg-black'>
-            <div id="menuToggle">
-              <input type="checkbox" />
-                <span></span>
-                <span></span>
-                <span></span>
-            <ul id="menu">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Info</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-           </div>
-          </nav>
-          </div>
+    <div >
+
+    <input id="toggle" type="checkbox"/>
+
+    
+    <label className="toggle-container" htmlFor="toggle">
+     
+      <span className="button button-toggle"></span>
+    </label>
+
+    <nav className="nav">
+      <a className="nav-item" href="">Dashboard</a>
+      <a className="nav-item" href="">History</a>
+      <a className="nav-item" href="">Statistics</a>
+      <a className="nav-item" href="">Settings</a>
+    </nav>
+
+    <section className="dummy-content">
+      <div className="circle"></div>
+      <div className="text">
+        <span></span><span></span>
+      </div>
+      <div className="square-top"></div>
+      <div className="square-behind"></div>
+    </section>
+  </div>
   )
 }
