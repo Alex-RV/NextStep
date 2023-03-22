@@ -28,7 +28,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   });
   console.log(data);
 
-    const rawResponse = await fetch('/api/sheets', {
+    const rawResponse = await fetch('/api/write_sheets', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
