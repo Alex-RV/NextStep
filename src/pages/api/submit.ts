@@ -29,8 +29,8 @@ export default async function handler(
     try {
         const auth = new google.auth.GoogleAuth({
             credentials: {
-                client_email: process.env.GOOGLE_CLIENT_EMAIL,
-                private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+                client_email: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_EMAILL,
+                private_key: process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
             },
             scopes: [
                 'https://www.googleapis.com/auth/drive',
@@ -45,7 +45,7 @@ export default async function handler(
         });
 
         const response = await sheets.spreadsheets.values.append({
-            spreadsheetId: process.env.GOOGLE_SHEET_ID,
+            spreadsheetId: process.env.NEXT_PUBLIC_SPREADSHEET_NAME,
             range: 'A1:D1',
             valueInputOption: 'USER_ENTERED',
             requestBody: {
@@ -58,6 +58,7 @@ export default async function handler(
                         body.phone,
                         body.birth,
                         body.residence,
+                        body.education,
                         body.experience,
                         body.goals,
                         body.interests.join(', '), // Join the interests array into a comma-separated string
