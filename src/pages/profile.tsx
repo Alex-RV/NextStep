@@ -1,43 +1,46 @@
-import React from 'react'
+import React, { FormEvent } from 'react'
 import Container from './components/Container'
 import CheckBox from './components/CheckBox'
 
-function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-  
-    // Get the form data
-    const form = event.target as HTMLFormElement;
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+  // Get the form data
+  const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-  
-    // Create an object from the form data
-    const data: any = {};
-    formData.forEach((value, key) => {
-        key.toLowerCase()
-      if (key === 'interests') {
-        // If the key is "interests", extract the checked checkboxes
-        const interests: string[] = [];
-        const checkboxes = document.querySelectorAll('input[name="interests"]') as NodeListOf<HTMLInputElement>;
-        checkboxes.forEach((checkbox) => {
+
+  // Create an object from the form data
+  const data = {};
+  formData.forEach((value, key) => {
+    if (key === 'interests') {
+      // If the key is "interests", extract the checked checkboxes
+      const interests = [];
+      const checkboxes = document.querySelectorAll('input[name="interests"]') as NodeListOf<HTMLInputElement>;
+      checkboxes.forEach((checkbox) => {
         if (checkbox.checked) {
-            interests.push(checkbox.value.toLowerCase());
+          interests.push(checkbox.value.toLowerCase());
         }
-        });
-        data[key] = interests;
-      } else {
-        data[key] = value;
-      }
+      });
+      data[key] = interests;
+    } else {
+      data[key] = value;
+    }
+  });
+  console.log(data);
+
+    const rawResponse = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     });
-    console.log(data)
-  
-    // Add the data to Firestore
-    // db.collection('profiles').add(data)
-    //   .then(() => {
-    //     console.log('Data added successfully');
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error adding data:', error);
-    //   });
-  }
+    const content = await rawResponse.json();
+
+    // print to screen
+    alert(content.data.tableRange)
+}
 
 export default function profile() {
   return (
@@ -46,14 +49,13 @@ export default function profile() {
             <div className='mb-10'>
                 <h1 className='text-gray-200 text-[5rem]'>My Profile</h1>
             </div>
-            {/* onSubmit={} */}
             <form id="profileForm" onSubmit={handleSubmit} className='items-start'>
                 <div>
                     <h1 className='text-gray-200 text-[3rem]'>Personal Information:</h1>
                     <div className='italic text-gray-200 text-[1.2rem] gap-4 w-full'>
                     
                     <div className="form__group field">
-                        <input type="input" className="form__field" placeholder="First Name" name="name" id='name' required />
+                        <input type="input" className="form__field" placeholder="First Name" name="first" id='first' required />
                         <label htmlFor="name" className="form__label">First Name</label>
                     </div>
                     <div className="form__group field">
@@ -132,3 +134,4 @@ export default function profile() {
     </Container>
   )
 }
+
