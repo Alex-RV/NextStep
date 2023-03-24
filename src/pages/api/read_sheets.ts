@@ -1,34 +1,43 @@
+import { isEmpty } from "@firebase/util";
 import { google } from "googleapis";
 import { NextApiRequest, NextApiResponse } from "next";
 
-// const getAuthData = async (searchValue: string, columnsData): Promise<number> => {
-//     try {
-//         columnsData.forEach((data, index) => {
-//             if (data === searchValue){
-//                 return console.log([data, index])
-//             }
-//             else { return console.log(data," not found there")}
-//         });
-//     } catch (error) {
-//       console.error(`Error retrieving row number: ${error}`);
-//       return null;
-//     }
-//   };
-
-const getAuthData = async (searchValue: string, columnsData: string[]): Promise<number> => {
+const getRowNumber = async (searchValue: string, columnsData: string[]): Promise<number[]> => {
     try {
-      for (let i = 0; i < columnsData.length; i++) {
-        if (columnsData[i] === searchValue) {
-          return i;
-        }
-      }
-      return null;
+        const rows: number[] = [];
+        columnsData.forEach((data, index) => {
+            if (data === searchValue){
+                rows.push(index+1) //to get the number of row in sheets(D:row)
+            }
+        });
+        if (isEmpty(rows)){console.error(searchValue, " is not found")}
+        return rows;
     } catch (error) {
       console.error(`Error retrieving row number: ${error}`);
       return null;
     }
   };
-  
+
+const getUserData = async (rowNumber, sheets): Promise<string[]> =>{
+    try {
+        let userData: string[] = [];
+        const response = await sheets.spreadsheets.values.get({
+            spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID,
+            range: `A${rowNumber}:K${rowNumber}`,
+        });
+        
+        userData = response.data.values.flat()
+        if (!userData){
+            console.error(`Error in reading user data from sheet`);
+            return null
+        }
+        return userData
+
+    }catch (error) {
+        console.error(`Error in getting user data: ${error}`);
+        return null;
+    }
+}
 
 export default async function handler( req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'GET') {
@@ -58,25 +67,26 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
                 spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID,
                 range: column,
             });
-            console.log("VAlues!!:",response.data.values)
             const columnsData = response.data.values ? response.data.values.flat() : [];
             console.log(`${columnsData.length} col retrieved.`);
             try {
-                    const rowNumber = await getAuthData(searchValue, columnsData);
-                    if (rowNumber !== null) {
-                      return res.status(200).json({ rowNumber });
+                    const rowNumber = await getRowNumber(searchValue, columnsData);
+                    console.log(rowNumber.length)
+                    if (rowNumber && rowNumber.length === 1) {
+                      const userData = await getUserData(rowNumber, sheets);
+                      return res.status(200).json({ userData });
                     } else {
-                      return res.status(404).send({ message: "Row not found" });
+                      return res.status(404).send({ message: `Row not found or more that 1 row, rowNumber = ${rowNumber.length}` });
                     }
                   } catch (e) {
                     return res.status(500).send({ message: "Server error" });
                   }
 
-        } catch (err) {
-            throw err;
+        } catch (error) {
+            throw error;
         }
         
-        }catch (e) {
-            return res.status(e.code).send({message: e.message})
+        }catch (error) {
+            return res.status(error.code).send({message: error.message})
         }
 }

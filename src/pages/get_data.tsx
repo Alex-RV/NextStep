@@ -15,7 +15,10 @@ const readData = async () => {
     url.searchParams.append('range', range);
 
     const response = await fetch(url.toString(), {
-    method: "GET",
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+          },
     });
     console.log("readData done");
     const content = await response.json();
