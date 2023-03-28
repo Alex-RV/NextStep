@@ -1,6 +1,8 @@
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import Container from './components/Container'
 import CheckBox from './components/CheckBox'
+import { signOut, useSession, getSession } from 'next-auth/react';
+import useSWR from 'swr';
 
 const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,12 +44,84 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     alert(content.data.tableRange)
 }
 
+
+
+
 export default function profile() {
+    const [formData, setFormData] = useState({
+        first: '',
+        last: '',
+        pronouns: '',
+        email: '',
+        phone: '',
+        birth: '',
+        residence: '',
+        education: '',
+        experience: '',
+        goals: '',
+      });
+    const [content, setContent] = useState([])
+    useEffect(() => {
+        const readData = async () => {
+            console.log("readData function");
+            const range = "A1:K5000";
+            const column = "D1:D5000";
+            const searchValue = 'alexsandrr2005@gmail.com';
+        
+            const url = new URL('/api/read_sheets', window.location.href);
+            url.searchParams.append('column', column);
+            url.searchParams.append('searchValue', searchValue);
+            url.searchParams.append('range', range);
+        
+            const response = await fetch(url.toString(), {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+            });
+            console.log("readData done");
+            const content = await response.json();
+            setContent(content);
+            console.log("TEST!!!",content[0])
+            
+            setFormData({
+                first: content[0],
+                last: content?.[1] ,
+                pronouns: content?.[2] ,
+                email: content?.[3] ,
+                phone: content?.[4] ,
+                birth: content?.[5],
+                residence: content?.[6],
+                education: content?.[7] ?? '',
+                experience: content?.[8] ?? '',
+                goals: content?.[9] ?? '',
+              });
+            return content;
+          };
+          readData()
+          
+        
+      }, [])
+    
+    const { data: session } = useSession();
+    console.log("CONTENT!!",!content ? "" : content[1])
+  
+    
+    // console.log(formData)
+  
+    // useEffect(() => {
+    //   if (!session) {
+    //     // User is not authenticated, redirect to login page
+    //     window.location.href = '/login';
+    //   }
+    //   const content = await readData();
+    // }, [session]);
   return (
     <Container>
         <div className='mt-32 flex flex-col justify-start items-center max-w-5xl w-full mx-auto mb-16 border-gray-200 dark:border-gray-700"'>
             <div className='mb-10'>
-                <h1 className='text-gray-200 text-[5rem]'>My Profile</h1>
+                {/* <h1 className='text-gray-200 text-[5rem]'>My Profile</h1> */}
+                <h1 className='text-gray-200 text-[4rem]'>Welcome {session?.user?.name}!</h1>
             </div>
             <form id="profileForm" onSubmit={handleSubmit} className='items-start'>
                 <div>
@@ -55,8 +129,8 @@ export default function profile() {
                     <div className='italic text-gray-200 text-[1.2rem] gap-4 w-full'>
                     
                     <div className="form__group field">
-                        <input type="input" className="form__field" placeholder="First Name" name="first" id='first' required />
-                        <label htmlFor="name" className="form__label">First Name</label>
+                        <input type="input" className="form__field" placeholder="First Name" defaultValue={formData.first} name="first" id='first' required />
+                        <label htmlFor="name" className="form__label">First Name {formData.first}</label>
                     </div>
                     <div className="form__group field">
                         <input type="input" className="form__field" placeholder="First Name" name="last" id='last' required />

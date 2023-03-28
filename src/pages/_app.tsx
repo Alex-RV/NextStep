@@ -3,6 +3,7 @@ import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
 import { SessionProvider } from 'next-auth/react';
 // import { SessionProvider } from 'next-auth/react';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({
   Component,
@@ -11,9 +12,8 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ThemeProvider attribute="class">
-        <main>
           <Component {...pageProps} />
-        </main>
+          <Analytics />
       </ThemeProvider>
     </SessionProvider>
   );
