@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import cn from 'classnames';
 import NextImage from 'next/image'
+import { signOut, useSession } from 'next-auth/react';
 
 import Footer from './Footer';
 import MobileMenu from './MobileMenu';
-import React from 'react';
-import { signOut, useSession } from 'next-auth/react';
+
 
 
 function NavItem({ href, text }) {
